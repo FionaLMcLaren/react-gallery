@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: theme('fontFamily.body');
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: theme('colors.stone.800');
+  background-color: theme('colors.stone.50');
+}
+
+@layer base {
+
+  /* Gallery borders */
+  .gal-border {
+    position: relative;
+  }
+
+  .gal-border:before, .gal-border:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 90%;
+    left: 10px;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+  }
+
+  .gal-border:before {
+    border-top: 2px theme('colors.stone.400') solid;
+    top: -15px;
+  }
+
+  .gal-border:after {
+    border-bottom: 2px theme('colors.stone.400') solid;
+    bottom: -15px;
+  }
+
+  .gal-border:hover:before, .gal-border:hover:after {
+    width: 110%;
+    left: -21px;
+  }
+
+  .gal-border:hover:before {
+    top: 15px;
+  }
+
+  .gal-border:hover:after {
+    bottom: 15px;
+  }
+
+  /* Gallery buy button and pagination buttons  */
+  .gal-buy, .page-next, .page-back {
+    background: linear-gradient(45deg, theme('colors.stone.200'), theme('colors.stone.200')) no-repeat right bottom;
+    background-size: 0 100%;
+    transition: background-size 750ms;
+  }
+
+  .gal-buy, .page-next {
+    border-left: 2px theme('colors.stone.200') solid;
+  }
+
+  .page-back {
+    border-right: 2px theme('colors.stone.200') solid;
+  }
+
+  .gal-buy:hover, .page-next:hover, .page-back:hover {
+    background-size: 100% 100%;
+    background-position-x: left;
+  }
+
+  .disabled-gal-buy {
+    border-left: 2px theme('colors.stone.200') solid;
+    background: none;
+    transition: opacity 750ms;
+    opacity: 0.7;
+  }
+
+  .disabled-gal-buy:hover {
+    opacity: 0.9;
+  }
+
+
+  /* Form labels  */
+  .input-label:after {
+    content: '/';
+    font-size: xx-large;
+    margin-left: 3px;
+    color: theme('colors.stone.400');
+  }
+
+  /* form input*/
+  .input-field {
+    position: relative;
+  }
+
+  .input-field:focus, .input-field:active {
+    background: transparent;
+  }
+
+  .input-field::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 10%;
+    bottom: 15px;
+    left: 60px;
+    border: 1px theme('colors.stone.200') solid;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+  }
+
+  .input-field:hover::after {
+    width: 70%;
+    transform: translateY(-3px);
+    border-color: theme('colors.stone.400');
+  }
+
+  /* form buttons, used for submitting and nav bars  */
+  .form-btn {
+    background: linear-gradient(45deg, theme('colors.stone.700'), theme('colors.stone.700')) no-repeat right bottom;
+    background-size: 0 100%;
+    transition-property: background-size, color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 750ms;
+  }
+
+  .form-btn:hover {
+    background-size: 100% 100%;
+    background-position-x: left;
+    color: theme('colors.stone.50');
+
+  }
+}
